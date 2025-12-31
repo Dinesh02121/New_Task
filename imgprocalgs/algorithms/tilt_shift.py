@@ -7,9 +7,13 @@ from typing import List
 from imgprocalgs.algorithms.utilities import create_empty_image
 
 from imgprocalgs.algorithms.utilities import Image
+from imgprocalgs.base.common_base import ImageAlgorithmBase
 
 
-class TiltShift:
+"""
+Class Already Exist In this File So we use inheritance method
+"""
+class TiltShift(ImageAlgorithmBase):
     """ Tilt-shift technique """
     def __init__(self,
                  image_path: str,
