@@ -2,11 +2,16 @@
 import argparse
 import os
 
+
 from PIL import Image as PillowImage
 from imgprocalgs.algorithms.utilities import Image, get_greyscale
+from imgprocalgs.base.common_base import ImageAlgorithmBase
 
 
-class FloydSteinberg:
+"""
+Class Already Exist In this File So we use inheritance method
+"""
+class FloydSteinberg(ImageAlgorithmBase):
     """
     Floyd Stainberg algorithm using for reducng grayscale image to black and white.
     Source: https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering
