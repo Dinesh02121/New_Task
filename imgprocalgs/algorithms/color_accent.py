@@ -1,6 +1,6 @@
 import argparse
-
 from imgprocalgs.algorithms import utilities
+from imgprocalgs.base.common_base import ImageAlgorithmBase
 
 
 def accent_color(input_path: str, output_path: str, h: float, _range: int):
@@ -29,6 +29,23 @@ def accent_color(input_path: str, output_path: str, h: float, _range: int):
                 output_pixels[x, y] = (greyscale_value, greyscale_value, greyscale_value)
 
     output_image.save(output_path)
+
+
+
+"""
+As No class exist we use wrapper based class function for this file
+"""
+class ColorAccentAlgorithm(ImageAlgorithmBase):
+    
+
+    def __init__(self, src: str, dest: str, h: int, range_: int):
+        self.src = src
+        self.dest = dest
+        self.h = h
+        self.range = range_
+
+    def process(self):
+        accent_color(self.src, self.dest, self.h, self.range)
 
 
 def parse_args():
