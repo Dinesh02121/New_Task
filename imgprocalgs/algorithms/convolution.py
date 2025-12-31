@@ -4,6 +4,7 @@ from PIL import Image
 import argparse
 from collections import namedtuple
 from imgprocalgs.visualisation.server import App
+from imgprocalgs.base.common_base import ImageAlgorithmBase
 
 
 ImageData = namedtuple("ImgData", 'header image')
@@ -57,6 +58,22 @@ def example(app: App):
         ]
     }
     app.register_route("/", template_name="main_page.html", **data)
+
+
+"""
+As No class exist we use wrapper based class function for this file
+"""
+class ConvolutionAlgorithm(ImageAlgorithmBase):
+    
+  
+
+    def __init__(self, src: str, dest: str, kernel=None):
+        self.src = src
+        self.dest = dest
+        self.kernel = kernel if kernel is not None else filter_kernel
+
+    def process(self):
+        apply_convolution(self.src, self.dest, self.kernel)
 
 
 def parse_args():
