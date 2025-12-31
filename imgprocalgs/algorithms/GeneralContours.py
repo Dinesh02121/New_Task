@@ -1,5 +1,5 @@
 import cv2
-
+from imgprocalgs.base.common_base import ImageAlgorithmBase
 def GetContours(img):
     '''
     One of the core functions of this whole algorithm.
@@ -18,3 +18,15 @@ def GetContours(img):
         medianFiltered, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         
     return cnts
+
+"""
+Use Of Wrapper Based Class Function for this File 
+"""
+class GeneralContoursAlgorithm(ImageAlgorithmBase):
+   
+
+    def __init__(self, img):
+        self.img = img
+
+    def process(self):
+        return GetContours(self.img)
