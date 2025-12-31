@@ -8,9 +8,12 @@ import functools
 from PIL import Image as PillowImage
 from imgprocalgs.algorithms.utilities import Image, ImageData
 from imgprocalgs.visualisation.server import App
+from imgprocalgs.base.common_base import ImageAlgorithmBase
 
-
-class ImageResizer(metaclass=abc.ABCMeta):
+"""
+Class Already Exist In this File So we use inheritance method
+"""
+class ImageResizer(ImageAlgorithmBase, metaclass=abc.ABCMeta):
     """ Base class of resizing algorithms """
     def __init__(self, image_path: str, scale: float):
         self.image = Image(image_path)
