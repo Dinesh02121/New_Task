@@ -1,6 +1,7 @@
 import argparse
 
 from imgprocalgs.algorithms.utilities import Image, create_empty_image
+from imgprocalgs.base.common_base import ImageAlgorithmBase
 
 OUTPUT_FILENAME = "negative.jpg"
 
@@ -16,6 +17,20 @@ def make_negative(image_path: str, dest_path: str):
             output_pixels[x, y] = (255 - red, 255 - green, 255 - blue)
 
     output.save(dest_path)
+
+"""
+Use of  Wrapper Function for this file
+"""
+class NegativeAlgorithm(ImageAlgorithmBase):
+   
+
+    def __init__(self, src: str, dest: str):
+        self.src = src
+        self.dest = dest
+
+    def process(self):
+        make_negative(self.src, self.dest)
+
 
 
 def parse_args():
