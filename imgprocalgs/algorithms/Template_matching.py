@@ -1,6 +1,7 @@
 
 import cv2
 import numpy as np
+from imgprocalgs.base.common_base import ImageAlgorithmBase
 
 
 def Template_matching(img, Img_Point, DesValue = 0.81, Debug_Enable = False):
@@ -54,6 +55,28 @@ def Template_matching(img, Img_Point, DesValue = 0.81, Debug_Enable = False):
     else:
         if Debug_Enable: print("Threshold not meeted")
         return None
+
+
+
+"""
+Use of funcational Wrapper Method No Class Exist
+"""
+class TemplateMatchingAlgorithm(ImageAlgorithmBase):
+    
+
+    def __init__(self, img, template, threshold=0.81, debug=False):
+        self.img = img
+        self.template = template
+        self.threshold = threshold
+        self.debug = debug
+
+    def process(self):
+        return Template_matching(
+            self.img,
+            self.template,
+            self.threshold,
+            self.debug
+        )
 
 
 img1 = cv2.imread('', cv2.IMREAD_COLOR)
